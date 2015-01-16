@@ -1,7 +1,18 @@
-@(message: String)
+@(message: String, tasks: List[(Int, String, String)])
+<!DOCTYPE html>
 
-@main("Welcome to Play") {
-
-    @play20.welcome(message)
-
-}
+<html>
+    <head>
+        <title>@message</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <script src="@routes.Assets.at("javascripts/hello.js")" type="text/javascript"></script>
+    </head>
+    <body>
+        <ul>
+        @for(t <- tasks) {
+        	<li> @t._1, @t._2, @t._3</li>
+        }
+        </ul>
+    </body>
+</html>
